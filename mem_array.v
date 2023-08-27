@@ -1,14 +1,19 @@
-module DATAMEM (input clk,
+module DATAMEM_array (input clk,
                 input write_EN,
                 input  [15:0] data_in,
                 input  [15:0] addr_in,
-                input  [15:0] addr_out,
-                output  [15:0] data_out
+                input  [15:0] addr_out1,
+                input  [15:0] addr_out2,
+                input  [15:0] addr_out3,
+                input  [15:0] addr_out4,
+                output  [15:0] data_out1,
+                output  [15:0] data_out2,
+                output  [15:0] data_out3,
+                output  [15:0] data_out4
                 );
     
-    reg [16:0] MEM [255:0];
-    integer f;
-    
+    reg [15:0] MEM [255:0];
+    integer f;   
     initial
     // [FIX] reading from text file, move to testbench 
     begin
@@ -43,7 +48,11 @@ module DATAMEM (input clk,
         // read always
         
     end
-    assign data_out = MEM[addr_out];
+
+    assign data_out1 = MEM[addr_out1];
+    assign data_out2 = MEM[addr_out2];
+    assign data_out3 = MEM[addr_out3];
+    assign data_out4 = MEM[addr_out4];
     // assign read_data = MEM[read_addr];
     
 endmodule

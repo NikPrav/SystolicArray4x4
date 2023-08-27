@@ -1,6 +1,14 @@
 time =                    0
-	memory[0] = xxxxxxxxxxxxxxxxx
-	memory[1] = xxxxxxxxxxxxxxxxx
-	memory[2] = xxxxxxxxxxxxxxxxx
-	memory[3] = xxxxxxxxxxxxxxxxx
+	memory0[0] = 0000000000000001
+	memory[1] = 0000000000000010
+	memory[2] = 0000000000000001
+	memory[3] = 0000000000000001
+
+time =                  210
+	memory[0] = 0000000000000001
+	memory[1] = 0000000000000010
+	memory[2] = 0000000000000001
+	memory[3] = 0000000000000001
+
+xxxxx
 
