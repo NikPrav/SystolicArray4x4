@@ -1,3 +1,12 @@
+/*
+Author: Nikhil Praveen ((nikhil.pravin@gmail.com))
+PE.v (c) 2023
+Organisation: Indian Institute of Technology, Hyderabad
+Desc: Processing Element that does 16bit Floating Point Operation
+Modified:  2023-08-27
+*/
+
+
 module PE(
     input clk,
     input rst,

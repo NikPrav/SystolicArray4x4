@@ -1,3 +1,12 @@
+/*
+Author: Nikhil Praveen ((nikhil.pravin@gmail.com))
+mem_array.v (c) 2023
+Organisation: Indian Institute of Technology, Hyderabad
+Desc: Memory Module for Matrices
+Modified:  2023-08-27
+*/
+
+
 module DATAMEM_array (input clk,
                 input write_EN,
                 input  [15:0] data_in,

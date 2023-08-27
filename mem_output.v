@@ -1,3 +1,12 @@
+/*
+Author: Nikhil Praveen ((nikhil.pravin@gmail.com))
+mem_output.v (c) 2023
+Organisation: Indian Institute of Technology, Hyderabad
+Desc: Memory Module to store output from PE
+Modified:  2023-08-27
+*/
+
+
 module DATAMEM_output (input clk,
                 input write_EN,
                 input [15:0] addr_ptr,

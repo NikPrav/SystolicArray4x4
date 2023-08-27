@@ -1,4 +1,12 @@
-// Main Control Unit that interfaces everything
+/*
+Author: Nikhil Praveen ((nikhil.pravin@gmail.com))
+CU.v (c) 2023
+Organisation: Indian Institute of Technology, Hyderabad
+Desc: Main Control Unit that interfaces memory and PE
+      Start from here to understand the flow of the code
+Modified:  2023-08-27
+*/
+
 module CU(
     input clk,
     input [15:0] addrA,

@@ -1,9 +1,20 @@
+"""
+Author: Nikhil Praveen ((nikhil.pravin@gmail.com))
+array_gen.py (c) 2023
+Organisation: Indian Institute of Technology, Hyderabad
+Desc: Script to generate array and compare results
+Modified:  2023-08-27
+"""
+
+
 import numpy as np
 import os
 
 # Generating number of instructions
 # Keeping it between 1 and 5
 i = np.random.randint(1,5)
+
+MEM_SIZE = 256
 
 print(f"Number of instructions:{i}")
 
@@ -37,24 +48,24 @@ for ins in instr:
 # B = B.flatten()
 # O = O.flatten()
 
-I = 4;
+# I = 4;
 
 with open("dataA.txt",'w') as fp:
     for i in range(len(A)):
         fp.write(str(bin(A[i]))[2:] + "\n")
-    for i in range(256 - len(A)):
+    for i in range(MEM_SIZE - len(A)):
         fp.write("0\n")
 
 with open("dataB.txt",'w') as fp:
     for i in range(len(B)):
         fp.write(str(bin(B[i]))[2:] + "\n")
-    for i in range(256 - len(B)):
+    for i in range(MEM_SIZE - len(B)):
         fp.write("0\n")
 
 with open("dataO.txt",'w') as fp:
     for i in range(len(O)):
         fp.write(str(bin(O[i]))[2:] + "\n")
-    for i in range(256 - len(O)):
+    for i in range(MEM_SIZE - len(O)):
         fp.write("0\n")
 
 with open("dataI.txt",'w') as fp:
@@ -62,7 +73,7 @@ with open("dataI.txt",'w') as fp:
     # fp.write(str(str(bin(I))[2:] + "\n"))
     for i in range(instr.shape[0]):
         fp.write(str(bin(instr[i]))[2:] + "\n")
-    for i in range(256 - instr.shape[0]):
+    for i in range(MEM_SIZE - instr.shape[0]):
         fp.write("0\n")
 
 # Running verilog code
