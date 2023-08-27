@@ -85,22 +85,31 @@ module top_module();
         enI <= 0;
         // Sending Start
         #12 ap_start <= 1;
-        
-        #130
-
+        #400
         addrO <= 0;
 
         for(i=0; i<256; i++) begin
             #10 MEMO[i] <= dataO;
             addrO <= i + 1;
         end
-
         $writememb("dataO_sim.txt", MEMO);
+        #500
+
+        
+
+        
         
 		#400 $finish;            // Quit the simulation
 	end
 
     always @(posedge ap_done) begin 
+        addrO <= 0;
+
+        for(i=0; i<256; i++) begin
+            #10 MEMO[i] <= dataO;
+            addrO <= i + 1;
+        end
+        $writememb("dataO_sim.txt", MEMO);
         
     end
 endmodule

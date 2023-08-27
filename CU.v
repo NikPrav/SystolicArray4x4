@@ -156,6 +156,7 @@ module CU(
 
     always @(posedge ap_start) begin
             state <= 0;
+            ap_done <= 0;
             counter <= 16'b0000000000000000;
             nxt_counter <= 16'b0000000000000000;
             addrI_out <= 16'b0000000000000000;
@@ -185,14 +186,17 @@ module CU(
         r3 <= dataB_out[2];
         r4 <= dataB_out[3];
         
-        counter <= counter + 1;
-        if (reset_buf == 1'b1) begin
+        
+        if (reset_buf == 1'b1 && dataI_out > 0) begin
                 // PE_en <= 0;
                 state <= 1;
             end 
-
+        if (dataI_out>0) begin
+        counter <= counter + 1;
+        end
         // State check
         if (state == 1'b1) begin
+            
             // c1
             // mem_buf <= 0;
             reset_buf <= 0;
@@ -296,6 +300,9 @@ module CU(
 
         if (dataI_out == 0) begin 
             ap_done <= 1;
+            state <= 0;
+            reset_buf <= 0;
+            mem_buf <= 0;
         end
     end
         
