@@ -5,7 +5,7 @@ Organisation: Indian Institute of Technology, Hyderabad
 Desc: Script to generate array and compare results
 Modified:  2023-08-27
 """
-
+from fxpmath import Fxp
 
 import numpy as np
 import os
@@ -27,8 +27,8 @@ B = [];
 
 # Generating Matrices
 for ins in instr:
-    A1 = np.random.randint(1,5, size=(4,ins))
-    B1 = np.random.randint(1,5, size=(ins,4))
+    A1 = np.random.random([4,ins])
+    B1 = np.random.random([ins,4])  
     O1 = np.matmul(A1,B1)
     A.extend(A1.flatten().tolist())
     B.extend(B1.flatten().tolist())
@@ -52,19 +52,19 @@ for ins in instr:
 
 with open("dataA.txt",'w') as fp:
     for i in range(len(A)):
-        fp.write(str(bin(A[i]))[2:] + "\n")
+        fp.write(str(Fxp(A[i], True, 16, 8).bin()).replace('.', '') + "\n")
     for i in range(MEM_SIZE - len(A)):
         fp.write("0\n")
 
 with open("dataB.txt",'w') as fp:
     for i in range(len(B)):
-        fp.write(str(bin(B[i]))[2:] + "\n")
+        fp.write(str(Fxp(B[i], True, 16, 8).bin()).replace('.', '') + "\n")
     for i in range(MEM_SIZE - len(B)):
         fp.write("0\n")
 
 with open("dataO.txt",'w') as fp:
     for i in range(len(O)):
-        fp.write(str(bin(O[i]))[2:] + "\n")
+        fp.write(str(Fxp(O[i], True, 16, 8).bin()).replace('.', '') + "\n")
     for i in range(MEM_SIZE - len(O)):
         fp.write("0\n")
 
@@ -91,8 +91,12 @@ with open("dataO_sim.txt",'r') as fp:
     
 O = np.array(O)
 ar = np.array(ar[:O.shape[0]])
+ar = ar/2**8
 
 if (np.array_equal(O,ar)):
     print("Arrays match up")
 else:
-    print("Issue")
+    print("Arrays have mismatched elements")
+
+diff = np.max(np.abs(O - ar))
+print(f"Max difference between elements = {diff}")

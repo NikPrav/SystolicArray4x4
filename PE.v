@@ -18,7 +18,8 @@ module PE(
     output reg [15:0] B1,
     output reg [15:0] C1
 );
-    wire [15:0] prd;
+    wire [32:0] prd;
+    wire [16:0] val;
     
     always @(posedge clk or posedge rst)
     begin
@@ -30,11 +31,12 @@ module PE(
         end else begin
         // Compute
             // MAC operation
-            C1 <= C1 + prd;
+            C1 <= C1 + val;
             // Forwarding inputs
             A1 <= A;
             B1 <= B;
         end
     end
     assign prd = A*B;
+    assign val = prd[23:8]; 
 endmodule
